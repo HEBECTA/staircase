@@ -5,11 +5,15 @@
 #include <iostream>
 #include <vector>
 
+// problem
 // https://www.youtube.com/watch?v=5o-kdjv7FD0
+
+int num_ways(const int N, const std::vector<int> &steps);
 
 int num_ways(const int N);
 
-int num_ways(const int N, const std::vector<int> &steps);
+int num_ways_efficient(const int N, const std::vector<int> &steps);
+
 
 int main()
 {
@@ -21,61 +25,14 @@ int main()
 
 	steps.push_back(2);
 
-	steps.push_back(3);
+	//steps.push_back(4);
 
-	std::cout << num_ways(4) << " " << num_ways(4, steps) << std::endl;
-
+	std::cout << num_ways(6) << " " << num_ways(6, steps) << " " << num_ways_efficient(6, steps) << std::endl;
 
     std::cout << "Hello World!\n"; 
 }
 
-int num_ways(const int N) {
 
-	int ways = 0;
-
-	if (N - 1 > 0) {
-
-		ways += num_ways(N - 1);
-	}
-		
-
-	if (N - 2 > 0) {
-
-		ways += num_ways(N - 2);
-	}
-
-	else{
-
-		++ways;
-	}
-
-	return ways;
-}
-
-int num_ways(const int N, const std::vector<int> &steps) {
-
-	int ways = 0;
-
-	bool a = false;
-
-	for (int i = 0; i < steps.size(); ++i) {
-
-		if (N - steps[i] > 0) {
-
-			ways += num_ways(N - steps[i], steps);
-		}
-
-		else {
-
-			a = true;
-		}
-	}
-
-	if (a)
-		++ways;
-
-	return ways;
-}
 
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
